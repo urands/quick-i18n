@@ -1,0 +1,39 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quick-i18n"
+version = "0.1.1"
+description = "A quick and easy internationalization library for Python."
+readme = { file = "README.md", content-type = "text/markdown" }
+authors = [
+    { name = "Iu Bell", email = "uran.ds@gmail.com" }
+]
+license = { text = "MIT License" }
+keywords = ["i18n", "internationalization", "translation", "localization", "python"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Internationalization",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = ">=3.6"
+dependencies = [
+    "python-slugify>=4.0.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/urands/quick-i18n"
+Documentation = "https://github.com/urands/quick-i18n#readme"
+Source = "https://github.com/urands/quick-i18n"
+Tracker = "https://github.com/urands/quick-i18n/issues"
