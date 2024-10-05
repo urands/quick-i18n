@@ -6,7 +6,7 @@ from i18n import t
 languages = ['en', 'es', 'ch', 'ru']
 
 # Test the translations for each language
-for lang in languages:
+for lang in t.languages:
     t.set_language(lang)
     print(t('Language: {}',lang))
     print(t('Welcome to our application!'))

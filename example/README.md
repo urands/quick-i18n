@@ -63,11 +63,8 @@ Create a main.py file to demonstrate how to use the i18n class.
 
 from i18n import t
 
-# List of languages to test
-languages = ['en', 'es', 'ch', 'ru']
-
 # Test the translations for each language
-for lang in languages:
+for lang in t.languages:
     t.set_language(lang)
     print(t('default.language', lang))
     print(t('default.welcome-to-our-application'))
