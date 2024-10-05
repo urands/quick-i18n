@@ -1,0 +1,7 @@
+{
+    "default": {
+        "language": "语言：{}",
+        "welcome-to-our-application": "欢迎使用我们的应用程序！"
+    },
+    "greeting": "你好，{name}！"
+}

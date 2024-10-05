@@ -1,0 +1,7 @@
+{
+    "default": {
+        "language": "Язык: {}",
+        "welcome-to-our-application": "Добро пожаловать в наше приложение!"
+    },
+    "greeting": "Привет, {name}!"
+}
