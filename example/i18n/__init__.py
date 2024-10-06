@@ -9,7 +9,7 @@ translations_path = os.path.join(os.path.dirname(__file__), 'translation')
 # Initialize the i18n instance
 t = i18n(
     languages=['en', 'es', 'ch', 'ru'],
-    current_language='en',
+    default_language='en',
     dev_mode=True,  # Set to False in production
     translations_path=translations_path
 )

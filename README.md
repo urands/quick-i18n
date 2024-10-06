@@ -28,7 +28,7 @@ from quicki18n import i18n
 # Initialize the i18n class
 t = i18n(
     languages=['en', 'es'],
-    current_language='en',
+    default_language='en',
     default_domain="default",
     dev_mode=True  # Set to False in production
 )
@@ -145,7 +145,7 @@ translations_path = os.path.join(os.path.dirname(__file__), '..', 'translations'
 # Initialize the i18n instance
 t = i18n(
     languages=['en', 'es', 'ru'],
-    current_language='en',
+    default_language='en',
     dev_mode=False,  # Set to True during development
     translations_path=translations_path
 )

@@ -3,7 +3,7 @@ import json
 from slugify import slugify
 
 class i18n:
-    def __init__(self, languages, current_language=None, dev_mode=False, default_domain='default', translations_path=None):
+    def __init__(self, languages, default_language=None, dev_mode=False, default_domain='default', translations_path=None):
         """
         Initialize the i18n class.
 
@@ -14,7 +14,8 @@ class i18n:
         :param translations_path: Path to the directory for translation files
         """
         self.languages = languages
-        self.current_language = current_language if current_language in languages else languages[0]
+        self.default_language = default_language if default_language in languages else languages[0]
+        self.current_language = self.default_language
         self.dev_mode = dev_mode
         self.translations = {}
         self.default_domain = default_domain
@@ -84,7 +85,7 @@ class i18n:
             lang = self.current_language
 
         if lang not in self.languages:
-            lang = self.languages[0]  # Use the first language as default
+            lang = self.default_language  # Use the first language as default
 
         if domain is None:
             domain = self.default_domain
@@ -95,12 +96,12 @@ class i18n:
         else:
             # Treat input as direct text, generate a slugified key
             tag = slugify(tag_or_text)
-            # Prepend domain to the tag
-            if domain:
-                tag = f"{domain}.{tag}"
-            # In development mode, add the tag and original text to translations
-            if self.dev_mode:
-                self._add_translation_to_all_languages(tag, tag_or_text)
+        # Prepend domain to the tag
+        if domain:
+            tag = f"{domain}.{tag}"
+        # In development mode, add the tag and original text to translations
+        if self.dev_mode:
+            self._add_translation_to_all_languages(tag, tag_or_text)
 
         translation = self._get_translation(tag, lang)
 
@@ -128,7 +129,7 @@ class i18n:
         :param text: Input text
         :return: True if text is a tag (no spaces), False otherwise
         """
-        return ' ' not in text
+        return ' ' not in text and text.lower() == text
 
     def _get_translation(self, tag, lang):
         """

@@ -1,7 +1,7 @@
 {
     "default": {
+        "greeting": "Hello, {name}!",
         "language": "Language: {}",
         "welcome-to-our-application": "Welcome to our application!"
-    },
-    "greeting": "Hello, {name}!"
+    }
 }
