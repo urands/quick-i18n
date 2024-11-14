@@ -161,7 +161,7 @@ Import the translation instance t and use it to fetch translations within your a
 ```python
 # app/main.py
 
-from . import t
+from .i18n import t
 
 if __name__ == "__main__":
     t.set_language('es')  # Set language to Spanish
