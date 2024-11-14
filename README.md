@@ -163,15 +163,11 @@ Import the translation instance t and use it to fetch translations within your a
 
 from . import t
 
-def greet_user(name):
-    welcome_message = t('default.welcome')
-    personalized_farewell = t('default.farewell', name=name)
-    print(welcome_message)
-    print(personalized_farewell)
-
 if __name__ == "__main__":
     t.set_language('es')  # Set language to Spanish
-    greet_user('Carlos')
+
+    print(t('default.welcome'))
+    print(t('default.farewell', name=name))
 
 
 ```
