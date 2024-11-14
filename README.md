@@ -166,7 +166,7 @@ from . import t
 if __name__ == "__main__":
     t.set_language('es')  # Set language to Spanish
 
-    print(t('default.welcome'))
+    print(t('default.welcome', lang='en'))
     print(t('default.farewell', name=name))
 
 
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
 Output:
 ```css
-¡Bienvenido a nuestra aplicación!
+Welcome to our application!
 ¡Adiós, Carlos!
 ```
 ## Best Practices
