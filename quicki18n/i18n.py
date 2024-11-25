@@ -1,9 +1,14 @@
-import os
 import json
+import os
+
 from slugify import slugify
 
+
 class i18n:
-    def __init__(self, languages, default_language=None, dev_mode=False, default_domain='default', translations_path=None):
+    def __init__(self, languages, default_language=None, dev_mode=False, default_domain='default', 
+                 translations_path=None,
+                 plugins = []
+                 ):
         """
         Initialize the i18n class.
 
@@ -18,7 +23,10 @@ class i18n:
         self.current_language = self.default_language
         self.dev_mode = dev_mode
         self.translations = {}
+        self._plugins = []
         self.default_domain = default_domain
+        for plugin in plugins:
+            self.add_plugin(plugin)
 
         # Set the base path for translations
         if translations_path:
@@ -33,6 +41,17 @@ class i18n:
         # Load translations for each language
         for lang in self.languages:
             self._load_language(lang)
+    
+    def add_plugin(self, plugin):
+        """
+        Add a plugin to the i18n system.
+
+        :param plugin: A plugin instance that implements a `process` method.
+        """
+        if hasattr(plugin, 'process') and callable(plugin.process):
+            self._plugins.append(plugin)
+        else:
+            raise ValueError("Plugin must have a 'process' method.")
 
     def set_language(self, lang):
         """
@@ -111,6 +130,10 @@ class i18n:
                 self._add_translation_to_all_languages(tag, tag)
             # Return the original text if translation is missing
             translation = tag_or_text
+
+        # Process through plugins
+        for plugin in self._plugins:
+            translation = plugin.process(translation, lang, domain, *args, **kwargs)
 
         # If formatting arguments are provided, format the translation string
         if args or kwargs:
